@@ -32,6 +32,16 @@ app.post('/create', (req, res, next) => {
     });
 });
 
+app.get('/employees', (req, res, next) => {
+    db.query('SELECT * FROM employee', (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 app.listen(9000, () => {
     console.log('Yay');
 });

@@ -10,9 +10,17 @@ function App() {
   const [position, setPosition] = useState('');
   const [wage, setWage] = useState(0);
 
+  const [employeeList, setEmployeeList] = useState([]);
+
   const addEmployee = () => {
     Axios.post('http://localhost:9000/create', {name: name, age: age, country: country, position: position,wage: wage}).then((response) => {
       console.log('Success');
+    })
+  };
+
+  const getEmployee = () => {
+    Axios.get('http://localhost:9000/employees').then((response) => {
+      setEmployeeList(response.data);
     })
   }
 
@@ -31,6 +39,19 @@ function App() {
         <input type="number" name="Salary" onChange={(e) => {setWage(e.target.value);}} />
         <button onClick={addEmployee}>Add Employee</button>
       </div>
+      <hr />
+      <div className="employees">
+        <button onClick={getEmployee}>Show Employee</button>
+
+        {employeeList.map((val, key) => {
+          return (
+            <div>
+              {val.name}
+            </div>
+          );
+        })}
+      </div>
+      
     </div>
   );
 }
