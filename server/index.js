@@ -30,8 +30,7 @@ app.post('/create', (req, res, next) => {
             res.send('Values inserted');
         }
     });
-
-    console.log('test');
+    console.log('Halo');
 });
 
 app.get('/employees', (req, res, next) => {
