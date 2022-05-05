@@ -8,13 +8,10 @@ const Header = () => {
     <div className="keylife__header section__padding" id="home">
       <div className="keylife__header-content">
         <h1 className="gradient__text">
-          Let's Learning something amazing with Keylife
+          Let us learn something amazing with Keylife
         </h1>
         <p>
-          Yet bed any for travelling assistance indulgence unpleasing. Not
-          thoughts all exercise blessing. Indulgence way everything joy
-          alteration boisterous the attachment. Party we years to order allow
-          asked of.
+        Your future’s wide open, and so is our course library. Learn more for less. Subsrcibe to our email to get discount information.
         </p>
         <div className="keylife__header-content__input">
           <input type="email" placeholder="Your Email Address" />

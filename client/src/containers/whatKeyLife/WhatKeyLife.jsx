@@ -8,7 +8,7 @@ const WhatKeyLife = () => {
       <div className="keylife__whatkeylife-feature">
         <Feature
           title="What is Keylife"
-          text="We so opinion friends me message as delight. Whole front do of plate heard oh ought. His defective nor convinced residence own. Connection has put impossible own apartments boisterous. At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by."
+          text="Changing lives, businesses, and nations through talent transformation in digital technologies. Our mission is to prepare students from various universities to improve their skills and be ready for a job or even make their own startup."
         />
       </div>
       <div className="keylife__whatkeylife-heading">
@@ -19,16 +19,16 @@ const WhatKeyLife = () => {
       </div>
       <div className="keylife__whatkeylife-container">
         <Feature
-          title="Chatbots"
-          text="We so opinion friends me message as delight. Whole front do of plate heard oh ought. "
+          title="Impact"
+          text="Use our proven playbook to achieve targeted results that increase retention and productivity. Consistently deliver quantifiable outcomes that matter to ROI and business growth, while gaining productivity and a competitive advantage in the market."
         />
         <Feature
           title="Knowledgebase"
-          text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b"
+          text="Curriculum co-created with industry leaders. Keylife offers the best and fastest solution for students to grow and get a job-ready skills anytime you need."
         />
         <Feature
-          title="Education"
-          text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b"
+          title="Hands-on projects"
+          text="Learn from experts in their fields and let them guide you and get personal feedback from industry to ensure your mastery."
         />
       </div>
     </div>

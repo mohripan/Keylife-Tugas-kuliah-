@@ -2,8 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(14, 5, 26, 0.726);
 
-  padding: 2rem 6rem;
+  padding: 0.5rem 5rem;
+  position: fixed;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  z-index: 10;
 }
 
 .keylife__navbar-links {
@@ -11,6 +16,49 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.keylife__navbar__input {
+  width: 95%;
+  margin: 1rem 0 1.5rem;
+
+  display: flex;
+}
+
+.keylife__navbar__input input {
+  flex: 2;
+  width: 100%;
+  min-height: 20px;
+  font-family: var(--font-family);
+  font-size: 21px;
+  line-height: 47px;
+  background: var(--color-footer);
+  border: 2px solid var(--color-footer);
+  padding: 0 1rem;
+  outline: none;
+  color: #fff;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.keylife__navbar__input button {
+  flex: 0.6;
+  width: 100%;
+  min-height: 20px;
+  font-family: var(--font-family);
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  background: #ff4820;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1rem;
+  border: none;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .keylife__navbar-links_logo {
@@ -25,6 +73,7 @@
 .keylife__navbar-links_container {
   display: flex;
   flex-direction: row;
+  width: 90%;
 }
 
 .keylife__navbar-sign {
@@ -47,6 +96,12 @@
   cursor: pointer;
 }
 
+.keylife__navbar-links_container p:hover,
+.keylife__navbar-sign p:hover,
+.keylife__navbar-menu_container p:hover {
+  color: #5f6de2;
+}
+
 .keylife__navbar-sign button,
 .keylife__navbar-menu_container button {
   padding: 0.5rem 1rem;
@@ -60,6 +115,11 @@
   border: 0;
   outline: none;
   cursor: pointer;
+}
+
+.keylife__navbar-sign button:hover,
+.keylife__navbar-menu_container button:hover {
+  background: #5f6de2;
 }
 
 .keylife__navbar-menu {

@@ -1,13 +1,11 @@
 import React from "react";
 import "./possibility.css";
 
-import possibilityImage from "../../assets/possibility.png";
-
 const Possibility = () => {
   return (
     <div className="keylife__possibility section__padding" id="possibility">
       <div className="keylife__possibility-image">
-        <img src={possibilityImage} alt="possibility" />
+        <img src="https://www.pngall.com/wp-content/uploads/5/Learning-PNG-Free-Download.png" alt="possibility" />
       </div>
       <div className="keylife__possibility-content">
         <h4>Request Early Access to Get Started</h4>
@@ -15,10 +13,7 @@ const Possibility = () => {
           The possibilities are beyond your imagination
         </h1>
         <p>
-          Yet bed any for travelling assistance indulgence unpleasing. Not
-          thoughts all exercise blessing. Indulgence way everything joy
-          alteration boisterous the attachment. Party we years to order allow
-          asked of.
+        Our experts work with you to design a tailored transformation journey. Solve your acute workforce challenges to deliver next-level business results.
         </p>
         <h4>Request Early Access to Get Started</h4>
       </div>

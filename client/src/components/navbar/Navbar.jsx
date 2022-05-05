@@ -1,33 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import logo from "../../assets/logo.png";
 import "./navbar.css";
 
 const Menu = () => (
   <>
-    <p>
-      <a href="#home">Home</a>
-    </p>
-    <p>
-      <a href="#wkeylife">What is Keylife</a>
-    </p>
-    <p>
-      <a href="#possibility">Open AI</a>
-    </p>
-    <p>
-      <a href="#features">Case Studies</a>
-    </p>
-    <p>
-      <a href="#blog">Library</a>
-    </p>
+    <div className="keylife__navbar__input">
+        <input type="text" placeholder="Search for anything" />
+        <button type="button">Find a course</button>
+    </div>
   </>
 );
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="keylife__navbar">
+      {Array(200).fill().map((_, i) => {
+        return <p key={i}>lorem ipsum {scrollPosition}</p>
+      })}
       <div className="keylife__navbar-links">
         <div className="keylife__navbar-links_logo">
           <img src={logo} alt="logo" />
@@ -37,6 +43,12 @@ const Navbar = () => {
         </div>
       </div>
       <div className="keylife__navbar-sign">
+      <p>
+      <a href="#possibility">Learning</a>
+    </p>
+    <p>
+      <a href="#features">Cart</a>
+    </p>
         <p>Sign in</p>
         <button type="button">Sign up</button>
       </div>
@@ -57,7 +69,7 @@ const Navbar = () => {
         {toggleMenu && (
           <div className="keylife__navbar-menu_container scale-up-center">
             <div className="keylife__navbar-menu_container-links">
-              <Menu />
+              <Menu/>
               <div className="keylife__navbar-menu_container-links-sign">
                 <p>Sign in</p>
                 <button type="button">Sign up</button>
