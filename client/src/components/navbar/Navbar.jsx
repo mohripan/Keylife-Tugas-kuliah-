@@ -30,10 +30,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="keylife__navbar">
-      {Array(200).fill().map((_, i) => {
-        return <p key={i}>lorem ipsum {scrollPosition}</p>
-      })}
+    <div className="keylife__navbar" style={scrollPosition > 980 ? {
+      position: "fixed",
+      backgroundColor: "rgba(14, 5, 26, 0.726)",
+    } : {}}>
       <div className="keylife__navbar-links">
         <div className="keylife__navbar-links_logo">
           <img src={logo} alt="logo" />
