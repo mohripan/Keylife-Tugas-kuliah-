@@ -1,10 +1,38 @@
-import React from 'react';
-import './whatKeyLife.css';
+import React from "react";
+import { Feature } from "../../components";
+import "./whatKeyLife.css";
 
 const WhatKeyLife = () => {
   return (
-    <div>WhatKeyLife</div>
-  )
-}
+    <div className="keylife__whatkeylife section__margin" id="wkeylife">
+      <div className="keylife__whatkeylife-feature">
+        <Feature
+          title="What is Keylife"
+          text="We so opinion friends me message as delight. Whole front do of plate heard oh ought. His defective nor convinced residence own. Connection has put impossible own apartments boisterous. At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by."
+        />
+      </div>
+      <div className="keylife__whatkeylife-heading">
+        <h1 className="gradient__text">
+          The possibilities are beyond your imagination
+        </h1>
+        <p>Explore The Library</p>
+      </div>
+      <div className="keylife__whatkeylife-container">
+        <Feature
+          title="Chatbots"
+          text="We so opinion friends me message as delight. Whole front do of plate heard oh ought. "
+        />
+        <Feature
+          title="Knowledgebase"
+          text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b"
+        />
+        <Feature
+          title="Education"
+          text="At jointure ladyship an insisted so humanity he. Friendly bachelor entrance to on by. As put impossible own apartments b"
+        />
+      </div>
+    </div>
+  );
+};
 
-export default WhatKeyLife
+export default WhatKeyLife;

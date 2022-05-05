@@ -90,3 +90,45 @@
   border-radius: 5px;
   box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
 }
+
+.keylife__navbar-menu_container p {
+  margin: 1rem;
+}
+
+.keylife__navbar-menu_container-links-sign {
+  display: none;
+}
+
+@media screen and (max-width: 1050px) {
+  .keylife__navbar-links_container {
+    display: none;
+  }
+
+  .keylife__navbar-menu {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .keylife__navbar {
+    padding: 2rem 4rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .keylife__navbar {
+    padding: 2rem;
+  }
+
+  .keylife__navbar-sign {
+    display: none;
+  }
+
+  .keylife__navbar-menu_container {
+    top: 20px;
+  }
+
+  .keylife__navbar-menu_container-links-sign {
+    display: block;
+  }
+}
