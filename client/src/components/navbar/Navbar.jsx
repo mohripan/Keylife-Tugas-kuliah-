@@ -33,8 +33,8 @@ const Navbar = () => {
     <p>
       <a href="#features">Cart</a>
     </p>
-        <Link to="/login"><p>Sign in</p></Link>
-        <button type="button">Sign up</button>
+        <Link to="/login/1"><p>Sign in</p></Link>
+        <Link to="/login/2"><button type="button">Sign up</button></Link>
       </div>
       <div className="keylife__navbar-menu">
         {toggleMenu ? (
