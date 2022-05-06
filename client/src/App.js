@@ -1,24 +1,17 @@
 import React from 'react'
-
-import { Footer, Blog, Possibility, Features, WhatKeyLife, Header} from './containers';
-import {CTA, Brand, Navbar} from './components';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomeScreen from './screens/HomeScreen.jsx';
+import Login from './screens/login/login.jsx';
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <div className="gradient__bg">
-        <Navbar />
-        <Header />
-      </div>
-      <Brand />
-      <WhatKeyLife />
-      <Features />
-      <Possibility />
-      <CTA />
-      <Blog />
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   )
 }
 

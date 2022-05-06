@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./navbar.css";
 
@@ -14,29 +15,12 @@ const Menu = () => (
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
-    <div className="keylife__navbar" style={scrollPosition > 980 ? {
-      position: "fixed",
-      backgroundColor: "rgba(14, 5, 26, 0.726)",
-    } : {}}>
+    <div className="keylife__navbar" id="navbars">
       <div className="keylife__navbar-links">
         <div className="keylife__navbar-links_logo">
-          <img src={logo} alt="logo" />
+          <Link to="/"><img src={logo} alt="logo" /></Link>
         </div>
         <div className="keylife__navbar-links_container">
           <Menu />
@@ -49,7 +33,7 @@ const Navbar = () => {
     <p>
       <a href="#features">Cart</a>
     </p>
-        <p>Sign in</p>
+        <Link to="/login"><p>Sign in</p></Link>
         <button type="button">Sign up</button>
       </div>
       <div className="keylife__navbar-menu">

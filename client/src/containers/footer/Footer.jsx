@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import keylifeLogo from "../../assets/logo.svg";
+import keylifeLogo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -16,8 +16,8 @@ const Footer = () => {
 
       <div className="keylife__footer-links">
         <div className="keylife__footer-links_logo">
-          <img src={keylifeLogo} alt="logo" />
-          <p>Crechterwoord K12 182 DK Alknjkcb, All Rights Reserved</p>
+          <img src={keylifeLogo} alt="logo" style={{width: '120px', height: '120px', textAlign: 'center'}} />
+          <p>KOPI HITAM, All Rights Reserved</p>
         </div>
         <div className="keylife__footer-links_div">
           <h4>Links</h4>
@@ -34,13 +34,13 @@ const Footer = () => {
         </div>
         <div className="keylife__footer-links_div">
           <h4>Get in touch</h4>
-          <p>Crechterwoord K12 182 DK Alknjkcb</p>
+          <p>KOPI HITAM</p>
           <p>085-132567</p>
-          <p>info@payme.net</p>
+          <p>kopihitam@payme.net</p>
         </div>
       </div>
       <div className="keylife__footer-copyright">
-        <p>© 2021 GPT-3. All rights reserved.</p>
+        <p>© 2022 Keylife. All rights reserved.</p>
       </div>
     </div>
   );

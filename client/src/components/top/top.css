@@ -1,6 +1,24 @@
 .keylife__top {
-    width: 100%;
+    width: 95%;
     height: 100%;
-    position:fixed;
+    padding: 2rem;
+}
+
+.keylife__top-content {
+    position: fixed;
+    min-width: 45px;
+    min-height: 20px;
+    padding: 0.5rem;
+    border-radius: 100%;
+    background: #ff4820;
+    bottom: 30px;
+    right: 30px;
+}
+
+.keylife__top-content img {
+    text-align: center;
+    width: 100%;
+    height: 30px;
+    color: white;
 }
 
