@@ -4,7 +4,6 @@ import {Navbar} from '../../components';
 import {Footer} from '../../containers';
 import { Icon } from '@iconify/react';
 import './login.scss';
-import $ from "jquery";
 
 const IsLogin = () => {
     const { id } = useParams();
@@ -39,15 +38,15 @@ const Login = () => {
                           <a href="#"><i className="fa-brands fa-google fa-2x"></i></a>
                           <a href="#"><i className="fa-brands fa-facebook fa-2x"></i></a>
                         </div>
-                        <div className="form-group">
+                        <div className="keylife__login-form-group">
                           <input type="email" name="logemail" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off"></input>
                           <Icon icon="carbon:email-new" className="keylife__login-input-icon" />
                         </div>
-                        <div className="form-group mt-2">
+                        <div className="keylife__login-form-group mt-2">
                           <input type="password" name="logpass" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
                           <Icon icon="carbon:password" className="keylife__login-input-icon" />
                         </div>
-                        <a href="#" className="keylife__login-btn mt-4">submit</a>
+                        <a href="/" className="keylife__login-btn mt-4">submit</a>
                         <p className="mb-0 mt-4 text-center"><a href="#0" className="keylife__login-link">Forgot your password?</a></p>
                       </div>
                     </div>
@@ -60,19 +59,19 @@ const Login = () => {
                             <a href="#"><i className="fa-brands fa-google fa-2x"></i></a>
                             <a href="#"><i className="fa-brands fa-facebook fa-2x"></i></a>
                         </div>
-                        <div className="form-group">
-                          <input type="text" name="logname" className="form-style" placeholder="Your Full Name" id="logname" autoComplete="off" />
+                        <div className="keylife__login-form-group">
+                          <input type="text" name="logname" className="form-style" placeholder="Username" id="logname" autoComplete="off" />
                           <Icon icon="uil:user" className="keylife__login-input-icon" />
                         </div>
-                        <div className="form-group mt-2">
+                        <div className="keylife__login-form-group mt-2">
                           <input type="email" name="logemail" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
                           <Icon icon="carbon:email-new" className="keylife__login-input-icon" />
                         </div>
-                        <div className="form-group mt-2">
+                        <div className="keylife__login-form-group mt-2">
                           <input type="password" name="logpass" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
                           <Icon icon="carbon:password" className="keylife__login-input-icon" />
                         </div>
-                        <a href="#" className="keylife__login-btn mt-4">submit</a>
+                        <a href="/" className="keylife__login-btn mt-4">submit</a>
                       </div>
                     </div>
                   </div>

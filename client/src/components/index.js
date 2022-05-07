@@ -4,3 +4,5 @@ export { default as CTA } from './cta/CTA';
 export { default as Feature } from './feature/Feature';
 export { default as Navbar } from './navbar/Navbar.jsx';
 export {default as Top} from './top/Top';
+export {default as Orders} from './profileComponents/Orders';
+export {default as ProfileTabs} from './profileComponents/ProfileTabs';
