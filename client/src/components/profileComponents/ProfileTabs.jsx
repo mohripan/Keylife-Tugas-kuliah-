@@ -13,7 +13,7 @@ const ProfileTabs = () => {
               name="id"
               className="form-style"
               placeholder="Student ID"
-              id="logname"
+              id="idstudent"
               autoComplete="off"
             />
             <Icon icon="arcticons:id-wallet" className="keylife__login-input-icon" />
@@ -27,7 +27,7 @@ const ProfileTabs = () => {
               name="firstname"
               className="form-style"
               placeholder="First Name"
-              id="logname"
+              id="firstname"
               autoComplete="off"
             />
             <Icon icon="icon-park-outline:edit-name" className="keylife__login-input-icon" />
@@ -38,10 +38,10 @@ const ProfileTabs = () => {
           <div className="keylife__login-form-group">
             <input
               type="text"
-              name="firstname"
+              name="lastname"
               className="form-style"
               placeholder="Last Name"
-              id="logname"
+              id="lastname"
               autoComplete="off"
             />
             <Icon icon="icon-park-twotone:edit-name" className="keylife__login-input-icon" />
@@ -67,17 +67,19 @@ const ProfileTabs = () => {
         <div className="col-md-12 p-4">
           <div className="keylife__login-form-group">
             <input
-              type="text"
-              name="firstname"
+              type="password"
+              name="confirm"
               className="form-style"
-              placeholder="Last Name"
-              id="logname"
+              placeholder="Confirm Password"
+              id="confirm_password"
               autoComplete="off"
             />
             <Icon icon="carbon:password" className="keylife__login-input-icon" />
           </div>
         </div>
-        <button type="submit">Confirm Registration</button>
+        <div style={{paddingTop: "1.2rem", margin: "auto", textAlign: "center"}}>
+          <button type="submit">Confirm Registration</button>
+        </div>
       </form>
     </>
   );

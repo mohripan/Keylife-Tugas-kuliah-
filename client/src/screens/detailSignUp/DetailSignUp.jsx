@@ -5,7 +5,8 @@ import './detailSignUp.scss';
 
 const DetailSignUp = () => {
   return (
-      <div>
+      <div className="gradient__bg">
+        <Navbar />
     <div className="container mt-lg-5 mt-3 keylife__account-settings">
         <div className="row align-items-start">
           {/* <div className="col-lg-4 p-0 shadow">
@@ -87,6 +88,10 @@ const DetailSignUp = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <Footer />
       </div>
   )
 }
