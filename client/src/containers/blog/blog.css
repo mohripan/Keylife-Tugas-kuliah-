@@ -73,3 +73,70 @@
     line-height: 42px;
   }
 }
+
+.section {
+  width: 100%;
+  padding-bottom: 6%;
+  padding-top: 2%;
+}
+.sidebar_item {
+  margin-bottom: 35px;
+}
+.sidebar_item h4 {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+.sidebar_item ul {
+  margin: 0;
+  padding: 0;
+}
+.sidebar_item ul li {
+  list-style: none;
+  display: flex;
+}
+
+.sidebar_item ul li a {
+  font-size: 16px;
+  color: white;
+  line-height: 45px;
+  display: block;
+  font-family: "Open Sans", sans-serif;
+}
+.sidebar_item ul li img {
+  width: 25px;
+  object-fit: contain;
+  margin-left: 20px;
+}
+.shop {
+  margin-bottom: 50px;
+}
+.border-product {
+  background: var(--color-footer);
+  padding: 1rem;
+}
+.shopBack {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: #f3fbf7;
+}
+.shopBack img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+.shoptext {
+  padding-top: 10px;
+}
+.shoptext p a {
+  color: white;
+}
+.shoptext h3 {
+  color: white;
+  margin-top: 13px;
+  font-weight: bold;
+  font-size: 19px;
+}

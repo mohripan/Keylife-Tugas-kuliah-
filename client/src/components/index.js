@@ -6,3 +6,5 @@ export { default as Navbar } from './navbar/Navbar.jsx';
 export {default as Top} from './top/Top';
 export {default as Orders} from './profileComponents/Orders';
 export {default as ProfileTabs} from './profileComponents/ProfileTabs';
+export {default as Pagination} from './pagination/Pagination';
+export {default as Rating} from './rating/Rating';

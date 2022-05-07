@@ -2,11 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "dev": "node index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "concurrently": "^7.1.0",
     "nodemon": "^2.0.16"
   }
 }
