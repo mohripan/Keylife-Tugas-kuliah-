@@ -8,3 +8,6 @@ export {default as Orders} from './profileComponents/Orders';
 export {default as ProfileTabs} from './profileComponents/ProfileTabs';
 export {default as Pagination} from './pagination/Pagination';
 export {default as Rating} from './rating/Rating';
+export {default as LoadingError} from './LoadingError/Error';
+export {default as LoadingToast} from './LoadingError/Toast';
+export {default as Loading} from './LoadingError/Loading';

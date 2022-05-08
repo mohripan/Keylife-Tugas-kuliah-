@@ -1,6 +1,7 @@
 .keylife__blog {
   display: flex;
   flex-direction: column;
+  font-family: var(--font-family);
 }
 
 .keylife__blog-heading {
@@ -112,16 +113,17 @@
 .shop {
   margin-bottom: 50px;
 }
+
 .border-product {
   background: var(--color-footer);
-  padding: 1rem;
+  padding: 0 0 1rem 0;
 }
 .shopBack {
   height: 250px;
   position: relative;
   overflow: hidden;
   width: 100%;
-  background-color: #f3fbf7;
+  background-color: white;
 }
 .shopBack img {
   width: 100%;

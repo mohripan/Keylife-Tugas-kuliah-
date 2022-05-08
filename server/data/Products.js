@@ -1,8 +1,8 @@
 const products = [
     {
       _id: "1",
-      name: "Velcro Ballerinas For Girls  (Pink)",
-      image: "/images/6.png",
+      name: "Machine Learning From Zero to Hero",
+      image: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera.s3.amazonaws.com/topics/ml/large-icon.png?auto=format%2Ccompress&dpr=1",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
       price: 89,
