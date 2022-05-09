@@ -20,7 +20,7 @@ const reviewSchema = mongoose.Schema({
     },
 });
 
-const author = mongoose.Schema({
+const authorSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,

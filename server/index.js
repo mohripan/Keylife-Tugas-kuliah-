@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDatabase from './config/MongoDb.js';
 import ImportData from "./DataImport.js";
+import productRoutes from "./router/ProductRoutes.js";
+import {errorHandler, notFound} from "./Middleware/Errors.js";
 
 dotenv.config();
 
@@ -9,10 +11,9 @@ const app = express();
 connectDatabase();
 
 app.use("/api/import", ImportData);
-
-app.get("/", (req, res) => {
-    res.send("API is running");
-});
+app.use("/api/products", productRoutes);
+app.use(notFound);
+app.use(errorHandler);
 
 // app.use(cors());
 app.use(express.json());
