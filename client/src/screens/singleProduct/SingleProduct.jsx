@@ -17,8 +17,7 @@ const SingleProduct = ({ match }) => {
         setProduct(data);
       };
       fetchProduct();
-      console.log(product.images);
-    });
+    }, [match]);
 
   return (
     <>
@@ -42,14 +41,7 @@ const SingleProduct = ({ match }) => {
                   <h6 style={{color: 'white'}}>Price</h6>
                   <span style={{color: 'white'}}>${product.price}</span>
                 </div>
-                <div className="flex-box d-flex justify-content-between align-items-center">
-                  <h6 style={{color: 'white'}}>Status</h6>
-                  {product.countInStock > 0 ? (
-                    <span style={{color: 'white'}}>In Stock</span>
-                  ) : (
-                    <span style={{color: 'white'}}>unavailable</span>
-                  )}
-                </div>
+                
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6 style={{color: 'white'}}>Reviews</h6>
                   <Rating

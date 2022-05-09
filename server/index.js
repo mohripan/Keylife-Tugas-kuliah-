@@ -1,59 +1,59 @@
 import express from "express";
-import products from "./data/Products.js";
+import dotenv from "dotenv";
+import connectDatabase from './config/MongoDb.js';
+import ImportData from "./DataImport.js";
+
+dotenv.config();
 
 const app = express();
+connectDatabase();
 
-app.get("/api/products", (req, res) => {
-    res.json(products);
-});
-
-app.get("/api/products/:id", (req, res) => {
-    const product = products.find(p => p._id === req.params.id);
-    res.json(product);
-});
+app.use("/api/import", ImportData);
 
 app.get("/", (req, res) => {
     res.send("API is running");
 });
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    password: '',
-    database: 'employee_system'
-});
+const PORT = process.env.PORT || 5000;
 
-app.post('/create', (req, res, next) => {
-    const name = req.body.name;
-    const age = req.body.age;
-    const country = req.body.country;
-    const position = req.body.position;
-    const wage = req.body.wage;
+app.listen(PORT, console.log("server running"));
 
-    db.query('INSERT INTO employee (name, age, country, position, salary) VALUES (?, ?, ?, ?, ?)', [name, age, country, position, wage], (err, result) => {
-        if (err) {
-            console.log(err);
-        } else{
-            res.send('Values inserted');
-        }
-    });
-    console.log('Halo');
-});
+// const db = mysql.createConnection({
+//     user: 'root',
+//     host: 'localhost',
+//     password: '',
+//     database: 'employee_system'
+// });
 
-app.get('/employees', (req, res, next) => {
-    db.query('SELECT * FROM employee', (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    });
-});
+// app.post('/create', (req, res, next) => {
+//     const name = req.body.name;
+//     const age = req.body.age;
+//     const country = req.body.country;
+//     const position = req.body.position;
+//     const wage = req.body.wage;
 
-app.listen(5000, console.log("server running"));
+//     db.query('INSERT INTO employee (name, age, country, position, salary) VALUES (?, ?, ?, ?, ?)', [name, age, country, position, wage], (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         } else{
+//             res.send('Values inserted');
+//         }
+//     });
+//     console.log('Halo');
+// });
+
+// app.get('/employees', (req, res, next) => {
+//     db.query('SELECT * FROM employee', (err, result) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             res.send(result);
+//         }
+//     });
+// });
 
 // const express = require('express');
 
