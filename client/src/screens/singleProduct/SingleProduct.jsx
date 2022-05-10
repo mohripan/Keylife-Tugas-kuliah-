@@ -1,29 +1,36 @@
-import React, {useState, useEffect} from "react";
-import Axios from "axios";
-import Header from "../../components/navbar/Navbar";
-import Rating from "../../components/rating/Rating";
+import React, {useEffect} from "react";
+import { Rating, Navbar, Loading} from "../../components";
 import {Footer} from "../../containers";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/LoadingError/Error";
 import "./singleProduct.scss";
+import { listProductDetails } from "../../redux/actions/ProductActions.js";
 
 const SingleProduct = ({ match }) => {
-    const [product, setProduct] = useState({});
     const {id} = useParams();
+    const dispatch = useDispatch();
+
+    const productDetails = useSelector((state) => state.productDetails);
+    const {loading, error, product} = productDetails;
 
     useEffect(() => {
-      const fetchProduct = async() => {
-        const {data} = await Axios.get(`/api/products/${id}`);
-        setProduct(data);
-      };
-      fetchProduct();
-    }, [match]);
+      dispatch(listProductDetails(id));
+    }, [dispatch, id]);
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="container single-product">
-        <div className="row">
+        {
+          loading ? (
+            <Loading />
+          ) : error ? (
+            <Message variant ="alert-danger">{error}</Message>
+          ) :
+          (
+            <>
+              <div className="row">
           <div className="col-md-4">
             <div className="single-image">
               <img src={product.image} alt={product.name} />
@@ -32,21 +39,21 @@ const SingleProduct = ({ match }) => {
           <div className="col-md-8">
             <div className="product-dtl">
               <div className="product-info">
-                <div className="product-name">{product.name}</div>
+                <div style={{lineHeight: '1.5'}} className="product-name">{product.name}</div>
               </div>
               <p style={{color: 'white'}}>{product.description}</p>
 
               <div className="product-count col-lg-7 ">
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6 style={{color: 'white'}}>Price</h6>
-                  <span style={{color: 'white'}}>${product.price}</span>
+                  <span style={{color: 'white'}}>RP. {product.price}</span>
                 </div>
                 
                 <div className="flex-box d-flex justify-content-between align-items-center">
                   <h6 style={{color: 'white'}}>Reviews</h6>
                   <Rating
                     value={product.rating}
-                    text={`Rp. {product.numReviews} reviews`}
+                    text={`${product.numReviews} reviews`}
                   />
                 </div>
                 
@@ -55,7 +62,6 @@ const SingleProduct = ({ match }) => {
           </div>
         </div>
 
-        {/* RATING */}
         <div className="row my-5">
           <div className="col-md-6">
             <h6 className="mb-3" style={{color: 'white'}}>REVIEWS</h6>
@@ -112,6 +118,10 @@ const SingleProduct = ({ match }) => {
             </div>
           </div>
         </div>
+            </>
+          )
+        }
+        
       </div>
       <Footer />
     </>
