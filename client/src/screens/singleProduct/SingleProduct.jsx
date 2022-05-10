@@ -46,7 +46,7 @@ const SingleProduct = ({ match }) => {
                   <h6 style={{color: 'white'}}>Reviews</h6>
                   <Rating
                     value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    text={`Rp. {product.numReviews} reviews`}
                   />
                 </div>
                 

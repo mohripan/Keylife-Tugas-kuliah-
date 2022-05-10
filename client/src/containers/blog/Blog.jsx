@@ -1,58 +1,71 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./blog.css";
-import { Pagination, Rating } from "../../components";
+import { Pagination, Rating, Loading, Message } from "../../components";
 import Axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { listProduct } from "../../redux/actions/ProductActions";
 
 const Blog = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async() => {
-      const {data} = await Axios.get("/api/products");
-      setProducts(data);
-    };
-    fetchProducts();
-  });
+    dispatch(listProduct());
+  }, [dispatch]);
 
   return (
     <div className="keylife__blog section__padding" id="blog">
-      <h1 className="gradient__text" style={{paddingBottom:'2rem', margin: 'auto', textAlign: 'center'}}>
-          Most popular courses in Keylife.
-        </h1>
+      <h1
+        className="gradient__text"
+        style={{ paddingBottom: "2rem", margin: "auto", textAlign: "center" }}
+      >
+        Most popular courses in Keylife.
+      </h1>
       <div className="keylife__blog-container">
         <div className="section">
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
-                {products.map((product) => (
-                  <div
-                    className="shop col-lg-4 col-md-6 col-sm-6"
-                    key={product._id}
-                  >
-                    <div className="border-product">
-                      <Link to={`/products/${product._id}`}>
-                        <div className="shopBack">
-                          <img src={product.image} alt={product.name} />
-                        </div>
-                      </Link>
-
-                      <div className="shoptext">
-                        <p>
+                {loading ? (
+                  <div className="mb-5"><Loading /></div>
+                ) : error ? (
+                  <Message variant="alert-danger">{error}</Message>
+                ) : (
+                  <>
+                    {products.map((product) => (
+                      <div
+                        className="shop col-lg-4 col-md-6 col-sm-6"
+                        key={product._id}
+                      >
+                        <div className="border-product">
                           <Link to={`/products/${product._id}`}>
-                            {product.name}
+                            <div className="shopBack">
+                              <img src={product.image} alt={product.name} />
+                            </div>
                           </Link>
-                        </p>
 
-                        <Rating
-                          value={product.rating}
-                          text={`${product.numReviews} reviews`}
-                        />
-                        <h3>${product.price}</h3>
+                          <div className="shoptext">
+                            <p>
+                              <Link to={`/products/${product._id}`}>
+                                {product.name}
+                              </Link>
+                            </p>
+
+                            <Rating
+                              value={product.rating}
+                              text={`${product.numReviews} reviews`}
+                            />
+                            <h3>${product.price}</h3>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    ))}
+                  </>
+                )}
+
                 {/* Pagination */}
                 <Pagination />
               </div>

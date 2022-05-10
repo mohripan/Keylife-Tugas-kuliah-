@@ -131,8 +131,9 @@
   object-fit: contain;
 }
 .shoptext {
-  padding-top: 10px;
+  padding: 1rem;
 }
+
 .shoptext p a {
   color: white;
 }
