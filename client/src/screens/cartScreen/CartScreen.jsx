@@ -1,25 +1,36 @@
 import React, { useEffect } from "react";
 import { Navbar } from "../../components";
 import { Footer } from "../../containers";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./cartScreen.scss";
-import { addToCart } from "../../redux/actions/CartActions";
+import { addToCart, removeFromCart } from "../../redux/actions/CartActions";
 
 const CartScreen = () => {
   window.scrollTo(0, 0);
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  let total = 0;
 
   useEffect(() => {
     if (id) {
       dispatch(addToCart(id));
     }
   }, [dispatch, id]);
+
+  const checkOutHandler = () => {
+    navigate(`/login/1?redirect=shipping`);
+  }
+
+  const removeFromCartHandle = (ids) => {
+    dispatch(removeFromCart(ids))
+  }
 
   return (
     <>
@@ -51,7 +62,9 @@ const CartScreen = () => {
             {
               cartItems.map((item) => (
                 <div className="cart-iterm row">
+                  <p style={{visibility: 'hidden'}}>{total = total + item.price}</p>
               <div
+                onClick={() => removeFromCartHandle(item.product)}
                 style={{ color: "white" }}
                 className="remove-button d-flex justify-content-center align-items-center"
               >
@@ -72,7 +85,7 @@ const CartScreen = () => {
               </div>
               <div className="cart-price mt-3 mt-md-0 col-md-2 align-items-sm-end align-items-start d-flex flex-column justify-content-center col-sm-7">
                 <h6 style={{ color: "white" }}>SUBTOTAL</h6>
-                <h4 style={{ color: "white" }}>RP. 456</h4>
+                <h4 style={{ color: "white" }}>RP. {item.price}</h4>
               </div>
             </div>
               ))
@@ -83,7 +96,7 @@ const CartScreen = () => {
                 total:
               </span>
               <span style={{ color: "white" }} className="total-price">
-                $567
+                RP. {total}
               </span>
             </div>
             <hr />
@@ -94,13 +107,16 @@ const CartScreen = () => {
               <Link to="/" className="col-md-6 ">
                 <button>Continue To Shopping</button>
               </Link>
-              <div className="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
-                <button>
-                  <Link to="/shipping" className="text-white">
-                    Checkout
-                  </Link>
-                </button>
-              </div>
+              {
+                total > 0 && (
+                  <div className="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
+                  <button onClick={checkOutHandler}>
+                      Checkout
+                  </button>
+                </div>
+                )
+              }
+             
             </div>
           </>
         )}
