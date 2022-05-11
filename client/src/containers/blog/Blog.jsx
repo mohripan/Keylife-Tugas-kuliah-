@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./blog.css";
 import { Pagination, Rating, Loading, Message } from "../../components";
-import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../redux/actions/ProductActions";
 

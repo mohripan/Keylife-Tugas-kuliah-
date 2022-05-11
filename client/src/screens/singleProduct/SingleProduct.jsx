@@ -1,13 +1,15 @@
 import React, {useEffect} from "react";
 import { Rating, Navbar, Loading} from "../../components";
 import {Footer} from "../../containers";
-import { Link, useParams} from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/LoadingError/Error";
 import "./singleProduct.scss";
 import { listProductDetails } from "../../redux/actions/ProductActions.js";
 
 const SingleProduct = ({ match }) => {
+    window.scrollTo(0, 0);
+    const navigate = useNavigate();
     const {id} = useParams();
     const dispatch = useDispatch();
 
@@ -17,6 +19,11 @@ const SingleProduct = ({ match }) => {
     useEffect(() => {
       dispatch(listProductDetails(id));
     }, [dispatch, id]);
+
+    const AddToCartHandle = (e) => {
+      e.preventDefault();
+      navigate(`/cart/${id}`);
+    }
 
   return (
     <>
@@ -56,7 +63,7 @@ const SingleProduct = ({ match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </div>
-                
+                <button onClick={AddToCartHandle} className="round-black-btn">Add To Cart</button>
               </div>
             </div>
           </div>
@@ -71,10 +78,7 @@ const SingleProduct = ({ match }) => {
               <Rating />
               <span>Jan 12 2021</span>
               <div className="alert alert-info mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book
+
               </div>
             </div>
           </div>
