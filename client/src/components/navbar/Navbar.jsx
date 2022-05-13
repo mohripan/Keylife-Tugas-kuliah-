@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 // import ReactJsAlert from "reactjs-alert";
 import logo from "../../assets/logo.png";
 import "./navbar.css";
+import { logout } from "../../redux/actions/UserActions";
 
 const Menu = ({ setStatus, setType, setTitle }) => (
   <>
@@ -28,6 +30,20 @@ const Navbar = () => {
   // const [status, setStatus] = useState(false);
   // const [type, setType] = useState("success");
   // const [title, setTitle] = useState("This is a alert");
+
+  const dispatch = useDispatch();
+
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
+
+  const logoutHandler = (e) => {
+    dispatch(logout());
+  }
 
   return (
     <div className="keylife__navbar" id="navbars">
@@ -54,14 +70,43 @@ const Navbar = () => {
           <a href="#possibility">Learning</a>
         </p>
         <p>
-          <a href="#features">Cart</a>
+          <Link to="/cart/101">Cart</Link>
+          <span className="badge">{cartItems.length}</span>
         </p>
-        <Link to="/login/1">
-          <p>Sign in</p>
-        </Link>
-        <Link to="/login/2">
-          <button type="button">Sign up</button>
-        </Link>
+        {
+          userInfo ? (
+            <div className="btn-group">
+                    <button
+                      type="button"
+                      className="name-button dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fas fa-user"></i>
+                    </button>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item" to="/profile">
+                        Profile
+                      </Link>
+
+                      <Link className="dropdown-item" to="#" onClick={logoutHandler}>
+                        Logout
+                      </Link>
+                    </div>
+                  </div>
+          ) : (
+            <>
+            <Link to="/login/1">
+            <p>Sign in</p>
+          </Link>
+          <Link to="/login/2">
+            <button type="button">Sign up</button>
+          </Link>
+          </>  
+          )
+        }
+
       </div>
       <div className="keylife__navbar-menu">
         {toggleMenu ? (

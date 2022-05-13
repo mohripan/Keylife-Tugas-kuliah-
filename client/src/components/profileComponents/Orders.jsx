@@ -16,7 +16,7 @@ const Orders = () => {
       </div> */}
 
       <div className="table-responsive">
-        <table className="table">
+        <table className="table" style={{color: 'white'}}>
           <thead>
             <tr>
               <th>ID</th>

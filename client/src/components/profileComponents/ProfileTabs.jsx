@@ -1,22 +1,41 @@
 import React from "react";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 const ProfileTabs = () => {
   return (
     <>
       <form className="row form-container">
-
-      <div className="col-md-12 p-4">
+        <div className="col-md-12 p-4">
           <div className="keylife__login-form-group">
             <input
               type="text"
-              name="id"
+              name="email"
               className="form-style"
-              placeholder="Student ID"
-              id="idstudent"
+              placeholder="Email"
+              id="email"
               autoComplete="off"
             />
-            <Icon icon="arcticons:id-wallet" className="keylife__login-input-icon" />
+            <Icon
+              icon="carbon:email-new"
+              className="keylife__login-input-icon"
+            />
+          </div>
+        </div>
+
+        <div className="col-md-12 p-4">
+          <div className="keylife__login-form-group">
+            <input
+              type="text"
+              name="studentId"
+              className="form-style"
+              placeholder="Student ID"
+              id="studentId"
+              autoComplete="off"
+            />
+            <Icon
+              icon="arcticons:id-wallet"
+              className="keylife__login-input-icon"
+            />
           </div>
         </div>
 
@@ -30,7 +49,10 @@ const ProfileTabs = () => {
               id="firstname"
               autoComplete="off"
             />
-            <Icon icon="icon-park-outline:edit-name" className="keylife__login-input-icon" />
+            <Icon
+              icon="icon-park-outline:edit-name"
+              className="keylife__login-input-icon"
+            />
           </div>
         </div>
 
@@ -44,7 +66,10 @@ const ProfileTabs = () => {
               id="lastname"
               autoComplete="off"
             />
-            <Icon icon="icon-park-twotone:edit-name" className="keylife__login-input-icon" />
+            <Icon
+              icon="icon-park-twotone:edit-name"
+              className="keylife__login-input-icon"
+            />
           </div>
         </div>
 
@@ -52,10 +77,12 @@ const ProfileTabs = () => {
           <div className="keylife__detail-sign-up-input-dropdown">
             <select
               id="universities"
-              classname="form-control"
+              className="form-control"
               name="universities"
             >
-              <option style={{display: 'none'}} value="0">Select Universities:</option>
+              <option style={{ display: "none" }} value="0">
+                Select Universities:
+              </option>
               <option value="1">Harvard</option>
               <option value="2">MIT</option>
               <option value="3">UNIKOM</option>
@@ -74,11 +101,16 @@ const ProfileTabs = () => {
               id="confirm_password"
               autoComplete="off"
             />
-            <Icon icon="carbon:password" className="keylife__login-input-icon" />
+            <Icon
+              icon="carbon:password"
+              className="keylife__login-input-icon"
+            />
           </div>
         </div>
-        <div style={{paddingTop: "1.2rem", margin: "auto", textAlign: "center"}}>
-          <button type="submit">Confirm Registration</button>
+        <div
+          style={{ paddingTop: "1.2rem", margin: "auto", textAlign: "center" }}
+        >
+          <button type="submit">Edit Profile</button>
         </div>
       </form>
     </>

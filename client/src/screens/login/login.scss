@@ -125,6 +125,7 @@
 .keylife__login-checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
   transform: rotateY(180deg);
 }
+
 .center-wrap{
   position: absolute;
   width: 100%;
@@ -256,7 +257,7 @@
 
 .keylife__login-btn:active,
 .keylife__login-btn:focus{
-  background-color: #102770;
+  background-color: #ca3c1d;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
