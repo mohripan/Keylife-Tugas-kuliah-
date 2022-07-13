@@ -35,6 +35,7 @@ const IsLogin = () => {
 };
 
 const Login = () => {
+  const [nim, setNim] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,7 +67,7 @@ const Login = () => {
 
   const registerHandler = (e) => {
     e.preventDefault();
-    dispatch(register(username,email, password));
+    dispatch(register(nim,username,email, password));
   }
 
   return (
@@ -88,8 +89,8 @@ const Login = () => {
               <IsLogin />
               <label htmlFor="reg-log"></label>
               <div className="card-3d-wrap mx-auto">
-                <div className="card-3d-wrapper">
-                  <div className="card-front">
+                <div className="card-3d-wrapper" style={{height: '30rem'}}>
+                  <div className="card-front" style={{height: '30rem'}}>
                     <div className="center-wrap">
                       <div className="section text-center">
                         <h4 className="mb-4 pb-3">Log In</h4>
@@ -152,7 +153,7 @@ const Login = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="card-back">
+                  <div className="card-back" style={{height: '30rem'}}>
                     <div className="center-wrap">
                       <div className="section text-center">
                         <h4 className="mb-4 pb-3">Sign Up</h4>
@@ -166,6 +167,22 @@ const Login = () => {
                         </div>
                         <form onSubmit={registerHandler}>
                         <div className="keylife__login-form-group">
+                          <input
+                            type="number"
+                            name="nim"
+                            className="form-style"
+                            placeholder="Student ID"
+                            value={nim}
+                            onChange={(e) => setNim(e.target.value)}
+                            id="nim"
+                            autoComplete="off"
+                          />
+                          <Icon
+              icon="arcticons:id-wallet"
+              className="keylife__login-input-icon"
+            />
+                        </div>
+                        <div className="keylife__login-form-group mt-2">
                           <input
                             type="text"
                             name="logname"
@@ -225,6 +242,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <br /><br /><br />
       <Footer />
     </div>
   );

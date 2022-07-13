@@ -26,10 +26,10 @@ const ProfileTabs = () => {
           <div className="keylife__login-form-group">
             <input
               type="text"
-              name="studentId"
+              name="nim"
               className="form-style"
               placeholder="Student ID"
-              id="studentId"
+              id="nim"
               autoComplete="off"
             />
             <Icon
