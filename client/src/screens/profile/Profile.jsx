@@ -1,18 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import moment from "moment";
+import { useSelector, useDispatch } from "react-redux";
 import {Navbar, ProfileTabs, Orders} from "../../components";
+import {getUserDetails} from '../../redux/actions/UserActions';
 import {Footer} from "../../containers";
 import "./profile.scss";
 
 const ProfileScreen = () => {
   window.scrollTo(0, 0);
 
+  const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
   const userLogin = useSelector((state) => state.userLogin);
-
   const { userInfo } = userLogin;
+
+  useEffect(() => {
+    dispatch(getUserDetails("profile"));
+  }, [dispatch]);
 
   return (
     <>
@@ -31,7 +38,7 @@ const ProfileScreen = () => {
                     <strong style={{color: 'white'}}>{userInfo.username}</strong>
                   </h5>
                   <span style={{color: 'white'}} className="author-card-position">
-                    <>Joined Dec 12 2021</>
+                    <>Joined {moment(userInfo.createdAt).format('LL')}</>
                   </span>
                 </div>
               </div>
