@@ -1,7 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Icon } from "@iconify/react";
 
 const ProfileTabs = () => {
+  const [nim, setNim] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [university, setUniversity] = useState("");
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <form className="row form-container">
