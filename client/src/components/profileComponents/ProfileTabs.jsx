@@ -5,6 +5,8 @@ import Toast from '../LoadingError/Toast';
 import Message from '../LoadingError/Error';
 import Loading from '../LoadingError/Loading';
 import { updateUserProfile } from "../../redux/actions/UserActions";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const SelectUniversity = ({name, set}) => {
   if(name === "") {
@@ -67,19 +69,33 @@ const ProfileTabs = () => {
   const {loading, error, user} = userDetails;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const {loading: updateLoading} = userDetails;
+  const {loading: updateLoading} = userUpdateProfile;
+
+  const oldPass = user.password;
 
   useEffect(() => {
     if(user) {
       setUsername(user.username);
       setEmail(user.email);
       setNim(user.nim);
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setUniversity(user.university);
     }
   }, [dispatch, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUserProfile({id:user._id, nim, username, email, firstName, lastName, university, password}))
+    if(oldPass !== password) {
+      if(!toast.isActive(toastId.current)){
+        toastId.current = toast.error("Password does not match", Toastobjects);
+      }
+    } else{
+      dispatch(updateUserProfile({id:user._id, nim, username, email, firstName, lastName, university, password}))
+      if(!toast.isActive(toastId.current)){
+        toastId.current = toast.success("Profile Updated", Toastobjects);
+      }
+    }
   }
 
   return (
@@ -167,7 +183,6 @@ const ProfileTabs = () => {
             />
           </div>
         </div>
-
         <div className="col-md-6 p-4">
           <div className="keylife__login-form-group">
             <input
@@ -202,7 +217,6 @@ const ProfileTabs = () => {
               placeholder="Confirm Password"
               required
               id="confirm_password"
-              value = {password}
               onChange = {(e) => setPassword(e.target.value)}
               autoComplete="off"
             />
