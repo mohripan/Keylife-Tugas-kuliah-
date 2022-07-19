@@ -1,5 +1,48 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Icon } from "@iconify/react";
+import { useSelector, useDispatch } from "react-redux";
+import Toast from '../LoadingError/Toast';
+import Message from '../LoadingError/Error';
+import Loading from '../LoadingError/Loading';
+import { updateUserProfile } from "../../redux/actions/UserActions";
+
+const SelectUniversity = ({name, set}) => {
+  if(name === "") {
+    return (
+      <select
+              id="universities"
+              className="form-control"
+              name="universities"
+              onChange = {(e) => set(e.target.value)}
+            >
+              <option style={{ display: "none" }} value="">
+                Select University:
+              </option>
+              <option value="Harvard">Harvard</option>
+              <option value="MIT">MIT</option>
+              <option value="UNIKOM">UNIKOM</option>
+              <option value="ITB">ITB</option>
+            </select>
+    )
+  }
+  else {
+    return (
+      <select
+              id="universities"
+              className="form-control"
+              name="universities"
+            >
+              <option style={{ display: "none" }} value={name}>
+                {name}
+              </option>
+              <option value="Harvard">Harvard</option>
+              <option value="MIT">MIT</option>
+              <option value="UNIKOM">UNIKOM</option>
+              <option value="ITB">ITB</option>
+            </select>
+    )
+  }
+}
 
 const ProfileTabs = () => {
   const [nim, setNim] = useState("");
@@ -9,12 +52,63 @@ const ProfileTabs = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [university, setUniversity] = useState("");
+  const toastId = React.useRef(null);
 
-  //const dispatch = useDispatch()
+  const Toastobjects = {
+    pauseOnFocusLoss: false,
+    draggable: false,
+    pauseOnHover: false,
+    autoClose:2000,
+  }
+
+  const dispatch = useDispatch();
+
+  const userDetails = useSelector((state) => state.userDetails);
+  const {loading, error, user} = userDetails;
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const {loading: updateLoading} = userDetails;
+
+  useEffect(() => {
+    if(user) {
+      setUsername(user.username);
+      setEmail(user.email);
+      setNim(user.nim);
+    }
+  }, [dispatch, user]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateUserProfile({id:user._id, nim, username, email, firstName, lastName, university, password}))
+  }
 
   return (
     <>
-      <form className="row form-container">
+    <Toast/>
+    {error && <Message variant="alert-danger">{error}</Message>}
+    {loading && <Loading/>}
+    {updateLoading && <Loading/>}
+      <form className="row form-container" onSubmit={submitHandler}>
+      <div className="col-md-12 p-4">
+          <div className="keylife__login-form-group">
+            <input
+              type="text"
+              name="nim"
+              className="form-style"
+              placeholder="Student ID"
+              required
+              id="nim"
+              autoComplete="off"
+              value={nim}
+              onChange={(e) => setNim(e.target.value)}
+            />
+            <Icon
+              icon="arcticons:id-wallet"
+              className="keylife__login-input-icon"
+            />
+          </div>
+        </div>
+
         <div className="col-md-12 p-4">
           <div className="keylife__login-form-group">
             <input
@@ -22,8 +116,11 @@ const ProfileTabs = () => {
               name="email"
               className="form-style"
               placeholder="Email"
+              required
               id="email"
               autoComplete="off"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <Icon
               icon="carbon:email-new"
@@ -36,14 +133,17 @@ const ProfileTabs = () => {
           <div className="keylife__login-form-group">
             <input
               type="text"
-              name="nim"
+              name="username"
               className="form-style"
-              placeholder="Student ID"
-              id="nim"
+              placeholder="Username"
+              required
+              id="username"
               autoComplete="off"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Icon
-              icon="arcticons:id-wallet"
+              icon="uil:user"
               className="keylife__login-input-icon"
             />
           </div>
@@ -57,6 +157,8 @@ const ProfileTabs = () => {
               className="form-style"
               placeholder="First Name"
               id="firstname"
+              value = {firstName}
+              onChange = {(e) => setFirstName(e.target.value)}
               autoComplete="off"
             />
             <Icon
@@ -73,6 +175,8 @@ const ProfileTabs = () => {
               name="lastname"
               className="form-style"
               placeholder="Last Name"
+              value = {lastName}
+              onChange = {(e) => setLastName(e.target.value)}
               id="lastname"
               autoComplete="off"
             />
@@ -85,19 +189,7 @@ const ProfileTabs = () => {
 
         <div className="col-md-12 p-4">
           <div className="keylife__detail-sign-up-input-dropdown">
-            <select
-              id="universities"
-              className="form-control"
-              name="universities"
-            >
-              <option style={{ display: "none" }} value="0">
-                Select Universities:
-              </option>
-              <option value="1">Harvard</option>
-              <option value="2">MIT</option>
-              <option value="3">UNIKOM</option>
-              <option value="4">ITB</option>
-            </select>
+            <SelectUniversity name={university} set={setUniversity}/>
           </div>
         </div>
 
@@ -108,7 +200,10 @@ const ProfileTabs = () => {
               name="confirm"
               className="form-style"
               placeholder="Confirm Password"
+              required
               id="confirm_password"
+              value = {password}
+              onChange = {(e) => setPassword(e.target.value)}
               autoComplete="off"
             />
             <Icon
